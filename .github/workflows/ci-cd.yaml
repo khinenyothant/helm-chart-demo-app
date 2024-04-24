@@ -1,0 +1,39 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DEV_VALUES_FILE: './helm-chart-demo-app/dev-values.yaml'
+      STAGING_VALUES_FILE: './helm-chart-demo-app/staging-values.yaml'
+      PROD_VALUES_FILE: './helm-chart-demo-app/prod-values.yaml'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: 'v3.14.2'
+
+      - name: Deploy to dev
+        run: |
+          helm upgrade --install my-app-dev ./helm-chart-demo-app \
+            --values $DEV_VALUES_FILE
+
+      - name: Deploy to staging
+        run: |
+          helm upgrade --install my-app-staging ./helm-chart-demo-app \
+            --values $STAGING_VALUES_FILE
+
+      - name: Deploy to production
+        run: |
+          helm upgrade --install my-app-prod ./helm-chart-demo-app \
+            --values $PROD_VALUES_FILE

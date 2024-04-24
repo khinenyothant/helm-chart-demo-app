@@ -1,0 +1,6 @@
+# Staging environment specific values
+replicaCount: 3
+image:
+  tag: "staging"
+service:
+  nodePort: 30008

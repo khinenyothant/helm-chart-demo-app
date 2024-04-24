@@ -1,0 +1,6 @@
+# Production environment specific values
+replicaCount: 5
+image:
+  tag: "prod"
+service:
+  nodePort: 30009
