@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DEV_VALUES_FILE: 'helm-chart-demo-app/dev-values.yaml'
-      STAGING_VALUES_FILE: 'helm-chart-demo-app/staging-values.yaml'
-      PROD_VALUES_FILE: 'helm-chart-demo-app/prod-values.yaml'
+      DEV_VALUES_FILE: './dev-values.yaml'
+      STAGING_VALUES_FILE: './staging-values.yaml'
+      PROD_VALUES_FILE: '.prod-values.yaml'
 
     steps:
       - name: Checkout code
@@ -28,7 +28,7 @@ jobs:
       - name: Debug
         run: |
           pwd
-          ls -la /helm-chart-demo-app
+          ls -la helm-chart-demo-app
 
       - name: Test Helm commands (no actual deployment)
         run: |
