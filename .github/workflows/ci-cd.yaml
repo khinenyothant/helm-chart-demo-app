@@ -14,7 +14,7 @@ jobs:
     env:
       DEV_VALUES_FILE: ./dev-values.yaml
       STAGING_VALUES_FILE: ./staging-values.yaml
-      PROD_VALUES_FILE: .prod-values.yaml
+      PROD_VALUES_FILE: ./prod-values.yaml
 
     steps:
       - name: Checkout code
