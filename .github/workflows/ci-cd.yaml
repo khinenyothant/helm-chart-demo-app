@@ -28,7 +28,7 @@ jobs:
       - name: Debug
         run: |
           pwd
-          ls -la helm-chart-demo-app
+          ls -la
 
       - name: Test Helm commands (no actual deployment)
         run: |
