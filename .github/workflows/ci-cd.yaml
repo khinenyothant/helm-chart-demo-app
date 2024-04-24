@@ -25,6 +25,11 @@ jobs:
         with:
           version: 'v3.14.2'
 
+      - name: Debug
+        run: |
+          pwd
+          ls -la ./helm-chart-demo-app
+
       - name: Test Helm commands (no actual deployment)
         run: |
           echo "Testing Helm commands..."
