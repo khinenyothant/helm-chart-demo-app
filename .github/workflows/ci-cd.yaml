@@ -3,7 +3,9 @@ name: CI/CD
 on:
   push:
     branches:
-      - main
+      - production
+      - staging
+      - development  # Listen for pushes to the production, staging, and development branches
 
 jobs:
   build:
