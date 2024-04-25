@@ -60,7 +60,3 @@ jobs:
         # run: |
         #   helm upgrade --install my-app-prod . \
         #     --values $PROD_VALUES_FILE
-        run: |
-          echo "Testing Helm commands..."
-          echo "Deploying to production environment (simulated):"
-          cat $PROD_VALUES_FILE  # Display the content of the production values file
