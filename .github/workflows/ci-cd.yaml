@@ -39,7 +39,7 @@ jobs:
           echo "Testing Helm commands..."
           echo "Deploying to dev environment (simulated):"
           cat $DEV_VALUES_FILE  # Display the content of the dev values file
-          echo "true" >> $GITHUB_ENV
+          echo "DEPLOY_TO_STAGING=true" >> $GITHUB_ENV
 
       - name: Deploy to staging
         if: github.ref == 'refs/heads/development' && env.DEPLOY_TO_STAGING == 'true'
