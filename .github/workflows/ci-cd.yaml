@@ -30,12 +30,32 @@ jobs:
           pwd
           ls -la
 
-      - name: Test Helm commands (no actual deployment)
+      - name: Deploy to dev
+        if: github.ref == 'refs/heads/development'  # Condition to deploy only on the development branch
+        # run: |
+        #   helm upgrade --install my-app-dev ./helm-chart-demo-app \
+        #     --values $DEV_VALUES_FILE
         run: |
           echo "Testing Helm commands..."
           echo "Deploying to dev environment (simulated):"
           cat $DEV_VALUES_FILE  # Display the content of the dev values file
+
+      - name: Deploy to staging
+        if: github.ref == 'refs/heads/staging'  # Condition to staging only on the staging branch
+        # run: |
+        #   # helm upgrade --install my-app-staging ./helm-chart-demo-app \
+        #   #   --values $STAGING_VALUES_FILE
+        run: |
+          echo "Testing Helm commands..."
           echo "Deploying to staging environment (simulated):"
           cat $STAGING_VALUES_FILE  # Display the content of the staging values file
+
+      - name: Deploy to production
+        if: github.ref == 'refs/heads/production'  # Condition to deploy only on the production branch
+        # run: |
+        #   helm upgrade --install my-app-prod ./helm-chart-demo-app \
+        #     --values $PROD_VALUES_FILE
+        run: |
+          echo "Testing Helm commands..."
           echo "Deploying to production environment (simulated):"
           cat $PROD_VALUES_FILE  # Display the content of the production values file
