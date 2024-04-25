@@ -31,9 +31,9 @@ jobs:
           ls -la
 
       - name: Deploy to dev
-        if: github.ref == 'refs/heads/development'  # Condition to deploy only on the development branch
+        if: github.ref == 'refs/heads/development'
         # run: |
-        #   helm upgrade --install my-app-dev ./helm-chart-demo-app \
+        #   helm upgrade --install my-app-dev . \
         #     --values $DEV_VALUES_FILE
         run: |
           echo "Testing Helm commands..."
@@ -44,12 +44,13 @@ jobs:
       - name: Deploy to staging
         if: github.ref == 'refs/heads/development' && env.DEPLOY_TO_STAGING == 'true'
         # run: |
-        #   # helm upgrade --install my-app-staging ./helm-chart-demo-app \
-        #   #   --values $STAGING_VALUES_FILE
+        #   helm upgrade --install my-app-staging . \
+        #   --values $STAGING_VALUES_FILE
         run: |
           echo "Testing Helm commands..."
           echo "Deploying to staging environment (simulated):"
           cat $STAGING_VALUES_FILE  # Display the content of the staging values file
+
 
       - name: Deploy to production
         if: github.ref == 'refs/heads/production'
@@ -57,7 +58,7 @@ jobs:
         with:
           message: "Approve production deployment"
         # run: |
-        #   helm upgrade --install my-app-prod ./helm-chart-demo-app \
+        #   helm upgrade --install my-app-prod . \
         #     --values $PROD_VALUES_FILE
         run: |
           echo "Testing Helm commands..."
