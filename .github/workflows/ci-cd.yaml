@@ -54,9 +54,11 @@ jobs:
 
       - name: Deploy to production
         if: github.ref == 'refs/heads/production'
-        uses: "bunchjesu/actions-approval@v2"
-        with:
-          message: "Approve production deployment"
+        # Manual approval step here
         # run: |
         #   helm upgrade --install my-app-prod . \
         #     --values $PROD_VALUES_FILE
+        run: |
+          echo "Testing Helm commands..."
+          echo "Deploying to production environment (simulated):"
+          cat $PROD_VALUES_FILE
