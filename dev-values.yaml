@@ -1,5 +1,5 @@
 # Development environment specific values
-replicaCount: 1
+replicaCount: 2
 image:
   tag: "dev"
 service:
